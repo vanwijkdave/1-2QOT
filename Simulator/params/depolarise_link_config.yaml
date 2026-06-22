@@ -1,0 +1,4 @@
+fidelity: 0.95
+t_cycle: 425_000  # 425 us, d=50km
+prob_success: 4.18e-3 # d=50km
+prob_max_mixed: 0

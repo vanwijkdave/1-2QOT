@@ -1,0 +1,38 @@
+qdevice_cfg: &qdevice_cfg
+  num_qubits: 2
+
+  # coherence times
+  T1: 62_000_000 # 62 ms
+  T2: 62_000_000 # 62 ms
+
+  # gate execution times
+  init_time: 65_000              # 65 us
+  single_qubit_gate_time: 12_000 # 12 us
+  two_qubit_gate_time: 107_000   # 107 us
+  measure_time: 2_000_000        # 2 ms
+
+  # noise model
+  single_qubit_gate_depolar_prob: 0.02  # fid=0.99
+  two_qubit_gate_depolar_prob: 0.067    # fid=0.95
+
+
+# Imperfect 2 node network, a bit of noise from either computation on the nodes or communication between nodes
+stacks:
+  - name: Alice
+    qdevice_typ: generic
+    qdevice_cfg:
+      <<: *qdevice_cfg
+  - name: Bob
+    qdevice_typ: generic
+    qdevice_cfg:
+      <<: *qdevice_cfg
+
+links:
+  - stack1: Alice
+    stack2: Bob
+    typ: depolarise
+
+clinks:
+  - stack1: Alice
+    stack2: Bob
+    typ: instant
