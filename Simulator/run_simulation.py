@@ -1,5 +1,13 @@
+"""
+Script used for generating the plots of the paper.
 
-# Import the two programs to form the application ran
+TODO: 
+- Clean up the code for better readability and maintainability.
+  Currently, the code is a messy and has some hardcoded values.
+- Time based tests need an adjustment to SquidASM, post the adjustments made
+"""
+
+
 import time
 
 from application import AliceProgram, BobProgram
